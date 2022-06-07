@@ -56,7 +56,7 @@ describe('Testando os redirecionamentos dos Links de navegação', () => {
       )).toBeInTheDocument();
     });
 
-  it('Ao clicar no link `Favorite Pokémons`, a aplicação é redirecionada para a URL `/favorites`?',
+  it('Ao clicar no link `Favorite Pokémons`, a aplicação é redirect para a URL certa?',
     async () => {
       const { history } = renderWithRouter(<App />);
       history.push('/about');
@@ -74,15 +74,16 @@ describe('Testando os redirecionamentos dos Links de navegação', () => {
       )).toBeInTheDocument();
     });
 
-  it('Teste se a aplicação é redirecionada para a página `Not Found` ao entrar em uma URL desconhecida.', async () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/*');
+  it('A aplicação é redirecit para a pag`Not Found` ao entrar em uma URL desconhecida?',
+    async () => {
+      const { history } = renderWithRouter(<App />);
+      history.push('/*');
 
-    const { pathname } = history.location;
-    expect(pathname).toBe('/*');
+      const { pathname } = history.location;
+      expect(pathname).toBe('/*');
 
-    expect(screen.getByRole(
-      'heading', { name: /Page requested not found/i, level: 2 },
-    )).toBeInTheDocument();
-  });
+      expect(screen.getByRole(
+        'heading', { name: /Page requested not found/i, level: 2 },
+      )).toBeInTheDocument();
+    });
 });
